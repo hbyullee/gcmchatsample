@@ -18,7 +18,7 @@ import com.google.android.gcm.server.Sender;
 public class GCMSender extends Sender{
 	private Result 				gcmResult;				//GCM Result(?¨ì¼?„ì†¡)
 	
-	private static String 		API_KEY = "AIzaSyAd1s5h71i3ND8RQVNw3H0LpbNhtVwXP5g";
+	private static String 		API_KEY = "AIzaSyCTo2AI8fazZYSonbOzgFmmdgZ-QCsOuug";
 	//ë©”ì„¸ì§?˜ ê³ ìœ  ID(?)?•ë„ë¡??ê°?˜ë©´ ?œë‹¤. ë©”ì„¸ì§?˜ ì¤‘ë³µ?˜ì‹ ??ë§‰ê¸° ?„í•´ ?œë¤ê°’ì„ ì§? •
 	private static String 		COLLAPSE_KEY = String.valueOf(Math.random() % 100 + 1);
 	//ê¸°ê¸°ê°??œì„±???íƒœ???? ë³´ì—¬ì¤?ê²ƒì¸ì§?
