@@ -1,6 +1,7 @@
 package com.example.gcmchat.parse;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Locale;
@@ -17,12 +18,15 @@ import android.util.Patterns;
 import android.widget.Toast;
 
 import com.example.gcmchat.R;
+import com.example.gcmchat.adapter.UserInfo;
 import com.google.android.gcm.GCMRegistrar;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
+import com.parse.FindCallback;
 import com.parse.LogInCallback;
 import com.parse.ParseACL;
 import com.parse.ParseException;
+import com.parse.ParseObject;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
 
@@ -162,4 +166,8 @@ public class UserDataHandler {
 				};
 			}.start();
 		}
+	 
+	 public static void getUserLists(Context context, FindCallback<ParseObject> callback) {
+		 //TODO implementation..
+	 }
 }

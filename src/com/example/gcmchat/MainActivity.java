@@ -3,9 +3,12 @@ package com.example.gcmchat;
 import java.io.IOException;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -73,6 +76,28 @@ public class MainActivity extends Activity implements OnClickListener {
 		// TODO Auto-generated method stub
 		
 	}
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		getMenuInflater().inflate(R.menu.main, menu);
+		return super.onCreateOptionsMenu(menu);
+	}
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case R.id.action_show_users:
+			startUserListActivity();
+			break;
+
+		default:
+			break;
+		}
+		return super.onOptionsItemSelected(item);
+	}
+	
+	private void startUserListActivity(){
+		Intent i = new Intent(this, UserListActivity.class);
+		startActivity(i);
+	}
 	
 
 	/* public void registerGcm() {
@@ -87,4 +112,6 @@ public class MainActivity extends Activity implements OnClickListener {
 	   Log.e("reg_id", regId);
 	  }
 	 }*/
+	
+	
 	}
