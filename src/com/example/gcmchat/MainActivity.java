@@ -2,8 +2,10 @@ package com.example.gcmchat;
 
 import java.io.IOException;
 
+
 import android.app.Activity;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -13,6 +15,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
+import com.example.gcmchat.gcm.GCMReceiver;
 import com.example.gcmchat.gcm.GCMSender;
 import com.example.gcmchat.gcm.GCMUtils;
 import com.example.gcmchat.parse.UserDataHandler;
@@ -32,6 +35,7 @@ public class MainActivity extends Activity implements OnClickListener {
 		setContentView(R.layout.activity_main);
 
 		initParseUser();
+
 	}
 	
 	private void initParseUser(){

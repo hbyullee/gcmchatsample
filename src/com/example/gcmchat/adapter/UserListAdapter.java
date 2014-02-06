@@ -1,21 +1,29 @@
 package com.example.gcmchat.adapter;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import com.example.gcmchat.R;
+import com.example.gcmchat.constant.Constants;
+import com.example.gcmchat.gcm.GCMSender;
+import com.google.android.gcm.server.Sender;
 
 import android.content.Context;
+import android.os.Message;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 /**
- * 이 앱을 설치한사람들의 리스트를 보여주기 위한 클래스.
+ * ���깆쓣 �ㅼ튂�쒖궗�뚮뱾��由ъ뒪�몃� 蹂댁뿬二쇨린 �꾪븳 �대옒��
  */
 public class UserListAdapter extends BaseAdapter {
-
+	private UserInfo user;
 	private Context mContext = null;
 	private LayoutInflater mInflater = null;
 	
@@ -51,11 +59,24 @@ public class UserListAdapter extends BaseAdapter {
 		if(convertView == null) {
 			convertView = mInflater.inflate(R.layout.list_item_user, null);
 		}
-		UserInfo user = mData.get(position);
+		user = mData.get(position);
 		
 		TextView tvPhoneNum = (TextView) convertView.findViewById(R.id.tv_list_item_user_phone_num);
 		tvPhoneNum.setText(user.phoneNum);
 		
+		convertView.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Log.v("abc","dd");
+				Map<String, String> payload=new HashMap<String, String>();
+				payload.put("aa", "aaa");
+				payload.put("bb", "bbb");
+				payload.put("cc", "ccc");
+				GCMSender gcm=GCMSender.getInstance();
+                gcm.sendMessage(user.id, payload);
+			}
+		});
 		return convertView;
 	}
 
