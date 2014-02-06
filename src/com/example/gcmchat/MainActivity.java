@@ -2,23 +2,19 @@ package com.example.gcmchat;
 
 import java.io.IOException;
 
-import com.example.gcmchat.constant.Constants;
+import android.app.Activity;
+import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+
 import com.example.gcmchat.gcm.GCMSender;
 import com.example.gcmchat.gcm.GCMUtils;
 import com.google.android.gcm.GCMRegistrar;
 import com.google.android.gcm.server.Result;
 import com.google.android.gcm.server.Sender;
-import com.parse.ParseObject;
-
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.app.Activity;
-import android.util.Log;
-import android.view.Menu;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
 
 public class MainActivity extends Activity implements OnClickListener {
 	Button btn;

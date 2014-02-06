@@ -5,4 +5,9 @@
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!!!!!!!!!!!!!</string>
 
+     <string name="login_success">로그인 성공!</string>
+    <string name="login_fail">로그인 실패!</string>
+    <string name="account_not_registered">계정이 등록되지 않았습니다!</string>
+    <string name="account_registered">계정 등록 성공!</string>
+    <string name="account_registered_fail">계정 등록 실패!</string>
 </resources>
