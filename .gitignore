@@ -34,3 +34,5 @@ out
 
 #lint
 lint.xml
+/bin
+/gen
