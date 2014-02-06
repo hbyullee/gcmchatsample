@@ -28,6 +28,8 @@ public class UserListActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_user_list);
 		init();
+		
+		
 	}
 	
 	private void init(){
@@ -41,8 +43,11 @@ public class UserListActivity extends Activity {
 				UserListAdapter adapter = new UserListAdapter(UserListActivity.this, infos);
 				mPrgLayout.setVisibility(View.GONE);
 				mListView.setAdapter(adapter);
+				
+				
 			}
 		});
+		
 	}
 
 }
