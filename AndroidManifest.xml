@@ -53,6 +53,9 @@
             </intent-filter>
            
        </receiver>
+       
+       <service 
+           android:name="com.example.gcmchat.gcm.GCMIntentService"></service>
     </application>
 
 </manifest>

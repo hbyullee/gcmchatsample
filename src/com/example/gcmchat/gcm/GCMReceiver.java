@@ -50,7 +50,8 @@ public class GCMReceiver extends BroadcastReceiver{
 					Log.i(context.getPackageName(), key+"/"+intent.getStringExtra(key));
 					sb.append(key+"/"+intent.getStringExtra(key)).append("\n");
 				}
-				Toast.makeText(context, sb.toString(), Toast.LENGTH_LONG).show();
+//				Toast.makeText(context, sb.toString(), Toast.LENGTH_LONG).show();
+				toastMessage(context, intent);
 			}
 			else{
 				//TODO : 예외 처리(send_error, deleted_messages, service_not_available인데, 이걸 해 줘야 하나 말아야 하나?
@@ -117,6 +118,14 @@ public class GCMReceiver extends BroadcastReceiver{
 				}
 			}
 		});
+	}
+	
+	private void toastMessage(Context context, Intent intent) {
+		if(context == null || intent == null || intent.hasExtra("text") == false) {
+			return;
+		}
+		String text = intent.getStringExtra("text");
+		Toast.makeText(context, text, Toast.LENGTH_SHORT).show();
 	}
 
 }
