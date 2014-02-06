@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.List;
 import java.util.Locale;
 import java.util.TimeZone;
 import java.util.regex.Pattern;
@@ -27,6 +28,7 @@ import com.parse.LogInCallback;
 import com.parse.ParseACL;
 import com.parse.ParseException;
 import com.parse.ParseObject;
+import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
 
@@ -169,5 +171,25 @@ public class UserDataHandler {
 	 
 	 public static void getUserLists(Context context, FindCallback<ParseObject> callback) {
 		 //TODO implementation..
+		 ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("GCMInfo");
+		 query.setLimit(Integer.MAX_VALUE);
+		 query.findInBackground(callback);
+	 }
+	 
+	 private static UserInfo convertUserInfo(ParseObject pObj) {
+		 UserInfo info = new UserInfo();
+		 info.id = pObj.getString("regId");
+		 info.phoneNum = pObj.getString("phoneNumber");
+		 return info;
+	 }
+	 
+	 public static ArrayList<UserInfo> convertUserInfo(List<ParseObject> pObjs) {
+		 ArrayList<UserInfo> infos = new ArrayList<UserInfo>();
+		 
+		 for(ParseObject pObj : pObjs) {
+			 infos.add(convertUserInfo(pObj));
+		 }
+		 
+		 return infos;
 	 }
 }

@@ -1,6 +1,6 @@
 package com.example.gcmchat.adapter;
 
 public class UserInfo {
-	String phoneNum = null;
-	String id = null;
+	public String phoneNum = null;
+	public String id = null;
 }
