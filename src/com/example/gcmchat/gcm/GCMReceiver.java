@@ -66,6 +66,9 @@ public class GCMReceiver extends BroadcastReceiver{
 
 	private void insertToParse(final Context context, final String registrationId) {
 		//등록하기 전에 먼저 이미 data가 있는지 확인.
+		if(ParseUser.getCurrentUser() == null) {
+			return;
+		}
 		ParseQuery<ParseObject> checkQuery = new ParseQuery<ParseObject>("GCMInfo");
         checkQuery.whereEqualTo("phoneNumber", ParseUser.getCurrentUser().getString("phoneNumber"));
         checkQuery.findInBackground(new FindCallback<ParseObject>() {

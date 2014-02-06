@@ -1,5 +1,8 @@
 package com.example.gcmchat;
 
+import com.parse.ParseQuery;
+import com.parse.ParseUser;
+
 import android.app.Activity;
 import android.os.Bundle;
 

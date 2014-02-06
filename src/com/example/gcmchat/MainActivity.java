@@ -31,46 +31,6 @@ public class MainActivity extends Activity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-		GCMRegistrar.checkDevice(this);
-		GCMRegistrar.checkManifest(this);
-		String regId = GCMRegistrar.getRegistrationId(this);
-
-		if (regId.equals("")) {
-			GCMRegistrar.register(this, GCMUtils.SENDER_ID);
-		} else {
-
-		}
-
-		btn = (Button) findViewById(R.id.button1);
-		btn.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				new Thread(new Runnable() {
-
-					@Override
-					public void run() {
-						Sender sender = new Sender(GCMSender.API_KEY);
-						com.google.android.gcm.server.Message message = new com.google.android.gcm.server.Message.Builder()
-								.addData("title", "welcome").addData("msg", "introduce").build();
-						try {
-							String regId = GCMRegistrar.getRegistrationId(MainActivity.this);
-							Result result = sender.send(message, regId, 5);
-							Log.v("abc", regId);
-							// TODO Auto-generated method stub
-							Log.v("abc", regId);
-						} catch (IOException e) {
-							e.printStackTrace();
-						}
-					}
-				}).start();
-				// TODO Auto-generated method stub
-
-			}
-		});
-
-		// GCMUtils.registerGCM(this);
-		
 		initParseUser();
 	}
 	
