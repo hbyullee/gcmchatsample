@@ -15,33 +15,36 @@ import android.widget.Button;
 
 import com.example.gcmchat.gcm.GCMSender;
 import com.example.gcmchat.gcm.GCMUtils;
+import com.example.gcmchat.parse.UserDataHandler;
 import com.google.android.gcm.GCMRegistrar;
 import com.google.android.gcm.server.Result;
 import com.google.android.gcm.server.Sender;
+import com.google.android.gms.internal.c;
+import com.parse.ParseUser;
 
 public class MainActivity extends Activity implements OnClickListener {
 	Button btn;
-	static final Handler mhandler= new Handler();
-	
-	 @Override
-	 public void onCreate(Bundle savedInstanceState) {
-	  super.onCreate(savedInstanceState);
-	  setContentView(R.layout.activity_main);
+	static final Handler mhandler = new Handler();
 
-	  GCMRegistrar.checkDevice(this);
-	  GCMRegistrar.checkManifest(this);
-	  String regId=GCMRegistrar.getRegistrationId(this);
-	  
-	  if(regId.equals("")){
-		  GCMRegistrar.register(this, GCMUtils.SENDER_ID);
-	  }else {
-		  
-	  }
-	  
-	  btn =(Button)findViewById(R.id.button1);
-	  btn.setOnClickListener(new OnClickListener() {
-		
-		@Override
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+
+		GCMRegistrar.checkDevice(this);
+		GCMRegistrar.checkManifest(this);
+		String regId = GCMRegistrar.getRegistrationId(this);
+
+		if (regId.equals("")) {
+			GCMRegistrar.register(this, GCMUtils.SENDER_ID);
+		} else {
+
+		}
+
+		btn = (Button) findViewById(R.id.button1);
+		btn.setOnClickListener(new OnClickListener() {
+
+			@Override
 			public void onClick(View v) {
 				new Thread(new Runnable() {
 
@@ -49,11 +52,9 @@ public class MainActivity extends Activity implements OnClickListener {
 					public void run() {
 						Sender sender = new Sender(GCMSender.API_KEY);
 						com.google.android.gcm.server.Message message = new com.google.android.gcm.server.Message.Builder()
-								.addData("title", "welcome")
-								.addData("msg", "introduce").build();
+								.addData("title", "welcome").addData("msg", "introduce").build();
 						try {
-							String regId = GCMRegistrar
-									.getRegistrationId(MainActivity.this);
+							String regId = GCMRegistrar.getRegistrationId(MainActivity.this);
 							Result result = sender.send(message, regId, 5);
 							Log.v("abc", regId);
 							// TODO Auto-generated method stub
@@ -66,21 +67,32 @@ public class MainActivity extends Activity implements OnClickListener {
 				// TODO Auto-generated method stub
 
 			}
-	});
-	  
-//	  GCMUtils.registerGCM(this);
+		});
+
+		// GCMUtils.registerGCM(this);
+		
+		initParseUser();
+	}
 	
-	 }
+	private void initParseUser(){
+		ParseUser curUser = ParseUser.getCurrentUser();
+		if(curUser == null) {
+			UserDataHandler.loginParse(this);
+		}
+	}
+
 	@Override
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
-		
+
 	}
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.main, menu);
 		return super.onCreateOptionsMenu(menu);
 	}
+
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
@@ -93,25 +105,20 @@ public class MainActivity extends Activity implements OnClickListener {
 		}
 		return super.onOptionsItemSelected(item);
 	}
-	
-	private void startUserListActivity(){
+
+	private void startUserListActivity() {
 		Intent i = new Intent(this, UserListActivity.class);
 		startActivity(i);
 	}
-	
 
-	/* public void registerGcm() {
-	  GCMRegistrar.checkDevice(this);
-	  GCMRegistrar.checkManifest(this);
+	/*
+	 * public void registerGcm() { GCMRegistrar.checkDevice(this);
+	 * GCMRegistrar.checkManifest(this);
+	 * 
+	 * final String regId = GCMRegistrar.getRegistrationId(this);
+	 * 
+	 * if (regId.equals("")) { GCMRegistrar.register(this, "�꾨줈�앺듃 �꾩씠��); }
+	 * else { Log.e("reg_id", regId); } }
+	 */
 
-	  final String regId = GCMRegistrar.getRegistrationId(this);
-
-	  if (regId.equals("")) {
-	   GCMRegistrar.register(this, "�꾨줈�앺듃 �꾩씠��);
-	  } else {
-	   Log.e("reg_id", regId);
-	  }
-	 }*/
-	
-	
-	}
+}

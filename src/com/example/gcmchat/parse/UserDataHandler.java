@@ -93,7 +93,7 @@ public class UserDataHandler {
 
                     ParseACL acl = new ParseACL();
                     acl.setPublicReadAccess(true);
-                    acl.setPublicWriteAccess(true);
+                    acl.setPublicWriteAccess(false);
 
                     user_signup.setUsername(username);
                     user_signup.setPassword(username);
