@@ -19,9 +19,6 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-/**
- * ���깆쓣 �ㅼ튂�쒖궗�뚮뱾��由ъ뒪�몃� 蹂댁뿬二쇨린 �꾪븳 �대옒��
- */
 public class UserListAdapter extends BaseAdapter {
 	private UserInfo user;
 	private Context mContext = null;
@@ -64,19 +61,6 @@ public class UserListAdapter extends BaseAdapter {
 		TextView tvPhoneNum = (TextView) convertView.findViewById(R.id.tv_list_item_user_phone_num);
 		tvPhoneNum.setText(user.phoneNum);
 		
-		convertView.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				Log.v("abc","dd");
-				Map<String, String> payload=new HashMap<String, String>();
-				payload.put("aa", "aaa");
-				payload.put("bb", "bbb");
-				payload.put("cc", "ccc");
-				GCMSender gcm=GCMSender.getInstance();
-                gcm.sendMessage(user.id, payload);
-			}
-		});
 		return convertView;
 	}
 
