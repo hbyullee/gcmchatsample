@@ -10,14 +10,14 @@ import com.google.android.gms.gcm.GoogleCloudMessaging;
 
 public class GCMUtils {
 	
-	final static String SENDER_ID = "64008216994"; // GCM �꾨줈�앺듃 �앹꽦 ��諛쒓툒 諛쏆� // Project_number
+	final public static String SENDER_ID = "64008216994"; // GCM 占쎄쑬以덌옙�븍뱜 占쎌빘苑�占쏙옙獄쏆뮄��獄쏆룇占�// Project_number
 	
 	public static void registerGCM(final Context context) {
 		new Thread(){
 			public void run() {
 				
 				/*
-				 * GCM���섏쐞 �명솚���꾪빐 ��援�諛⑹떇��紐⑤몢 梨꾩슜�섎㈃��callback��receiver 諛⑹떇�쇰줈 �듯븿��
+				 * GCM占쏙옙占쎌꼷��占쎈챸�싷옙占쏙옙袁る퉸 占쏙옙�댐옙獄쎻뫗�뉛옙占쏙쭗�ㅻあ 筌�쑴�쒙옙�롢늺占쏙옙callback占쏙옙receiver 獄쎻뫗�뉛옙�곗쨮 占쎈벏釉울옙占�
 				 */
                 String regId     = null;
                 try {
@@ -29,7 +29,7 @@ public class GCMUtils {
 				int serviceEnable = GooglePlayServicesUtil.isGooglePlayServicesAvailable(context);
 
 				/*
-				 * 2013.11.20 JuL GooglePlayService �댁뿉 �뺤쓽�섏뼱�덈뒗 媛믪� �꾨옒��媛숇떎.
+				 * 2013.11.20 JuL GooglePlayService 占쎈똻肉�占쎈벡�쏙옙�뤿선占쎈뜄��揶쏅�占�占쎄쑬�믭옙占썲첎�뉖뼄.
 				 * switch (errorCode)
 				 * { case 0:
 				 * 		return "SUCCESS";
@@ -44,7 +44,7 @@ public class GCMUtils {
 				 *
 				 * return "UNKNOWN_ERROR_CODE";
 				 */
-				if (regId == null && serviceEnable != 0){	//google play service媛��숈옉�섏� �딅뒗 �⑤쭚��寃쎌슦
+				if (regId == null && serviceEnable != 0){	//google play service揶쏉옙占쎌늿�됵옙�륅옙 占쎈봾��占썩뫀彛싷옙占썲칰�뚯뒭
 					android.util.Log.e(context.getPackageName(), GooglePlayServicesUtil.getErrorString(serviceEnable));
 					GCMRegistrar.register(context, SENDER_ID);
 				}

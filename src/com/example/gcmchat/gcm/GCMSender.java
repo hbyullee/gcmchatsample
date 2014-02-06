@@ -18,7 +18,7 @@ import com.google.android.gcm.server.Sender;
 public class GCMSender extends Sender{
 	private Result 				gcmResult;				//GCM Result(?¨ì¼?„ì†¡)
 	
-	private static String 		API_KEY = "AIzaSyCTo2AI8fazZYSonbOzgFmmdgZ-QCsOuug";
+	public static String 		API_KEY = "AIzaSyCTo2AI8fazZYSonbOzgFmmdgZ-QCsOuug";
 	//ë©”ì„¸ì§?˜ ê³ ìœ  ID(?)?•ë„ë¡??ê°?˜ë©´ ?œë‹¤. ë©”ì„¸ì§?˜ ì¤‘ë³µ?˜ì‹ ??ë§‰ê¸° ?„í•´ ?œë¤ê°’ì„ ì§? •
 	private static String 		COLLAPSE_KEY = String.valueOf(Math.random() % 100 + 1);
 	//ê¸°ê¸°ê°??œì„±???íƒœ???? ë³´ì—¬ì¤?ê²ƒì¸ì§?
@@ -42,7 +42,7 @@ public class GCMSender extends Sender{
 		return mInstance;
 	}
 	
-	private Message buildMessage(Map<String, String> payload){
+	public static Message buildMessage(Map<String, String> payload){
 		Message.Builder builder = new Message.Builder()
 	    .collapseKey(COLLAPSE_KEY)
 	    .delayWhileIdle(DELAY_WHILE_IDLE)
